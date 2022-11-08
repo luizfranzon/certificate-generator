@@ -8,7 +8,11 @@ export default function Home() {
     event.preventDefault();
     axios.post("http://localhost:3080/generate", {
       personName,
-    });
+    }).then(response => {
+      setTimeout(() => {
+        location.replace(response.data.redirect);
+      }, 1500)
+    })
     setPersonName("");
   }
 
